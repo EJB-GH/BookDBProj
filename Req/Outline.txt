@@ -1,0 +1,24 @@
+# BookDBProj
+Work in progress....
+
+This is the beginning of the planning phase of the "Lady's Library" software project.
+
+#REQUIREMENTS#
+
+1. Basic query functionality using pre built commands with Postgres W/ Python
+    -Users should be able to search by
+        -authors
+        -series
+        -title
+
+    -admin priv can also
+        -add
+        -remove
+
+2. Firmly decided on 2 tables
+    books
+    authors
+
+    a potential 3rd table for genres but it may just be simpler to factor it into books as a column
+
+    
