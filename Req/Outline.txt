@@ -3,6 +3,8 @@ Work in progress....
 
 This is the beginning of the planning phase of the "Lady's Library" software project.
 
+!Psycopg returns tuples for execute calls!
+
 #REQUIREMENTS#
 
 1. Basic query functionality using pre built commands with Postgres W/ Python
@@ -10,15 +12,23 @@ This is the beginning of the planning phase of the "Lady's Library" software pro
         -authors
         -series
         -title
+        -edition search for specials/hardcovers
+
+    -Non search queries
+        -total count
+        -count by author
+        -count for series
 
     -admin priv can also
         -add
         -remove
 
-2. Firmly decided on 2 tables
+2. 3 tables
     books
     authors
-
-    a potential 3rd table for genres but it may just be simpler to factor it into books as a column
+    book_authors
+    
+    book_authors maintains the many to many relationship. 
+    books and authors are
 
     
