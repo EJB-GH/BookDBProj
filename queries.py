@@ -17,7 +17,30 @@ class query(connection):
             #learned that psycopg returns tuples
             print("Total number of books: ", result[0])
 
-    
+    def search_author(self):
+        '''
+        function allows searching of the database
+        for specific authors and their output
+        BY AUTHOR_FIRST AUTHOR_LAST
+        '''
+        
+        pass 
+
+    def search_series(self):
+        '''
+        function allows searching of the database
+        for a specific series
+        BY SERIES
+        '''
+        pass
+
+    def search_book(self):
+        '''
+        functino allows searching of the database
+        for single book existence
+        BY TITLE
+        '''
+        pass
             
 
         

@@ -1,5 +1,8 @@
 import psycopg2
 
+#running the python insert is actually much slower than running
+#\copy in the sql functions, should test this when testing this program
+#to see how it performs on a much smaller load amount, and on my own machine
 
 class connect():
     def __init__(self):
