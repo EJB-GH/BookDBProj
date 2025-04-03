@@ -31,6 +31,7 @@ class connect():
         return connection
 
 class query(connect):
+    
     def __init__(self, connection):
         self.db = connection
 
@@ -52,9 +53,18 @@ class query(connect):
         function allows searching of the database
         for specific authors and their output
         BY AUTHOR_FIRST AUTHOR_LAST
+        Uses the str_input function
         '''
-        
-        pass 
+        print("Author First name: ")
+        first = str_input()
+        print("Author Last name: ")
+        last = str_input()
+        #keeping this seperate to compare against entries in the database 
+
+        with self.db.cursor as query:
+            #need to look over database structure before finalizing this query
+            query.execute('select books.titles, ')
+            result = query.fetchall()
 
     def search_series(self):
         '''

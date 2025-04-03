@@ -3,6 +3,8 @@ from input_handling import *
 #from PIL import Image dont need at the moment
 
 
+#menu doesnt need to really be its own class, should fold it into
+#the query. This is overly complex for no reason
 class menu():
     def __init__(self):
         self.selection = None
@@ -33,9 +35,14 @@ class menu():
         else:
             self.searching()
 
-
     def totaling(self):
         print("Totaling Options:\n")
         for i in range(len(sub_opt1)):
             print(f"\t*{sub_opt1[i]} - Enter {i + 1}\n")
         self.selection = choice(1, len(sub_opt1))
+
+    def searching(self):
+        print("Searches.:\n")
+        for i in range(len(sub_opt2)):
+            print(f"\t*{sub_opt2[i] - {i + 1}}\n")
+        self.selection = choice(1, len(sub_opt2))
