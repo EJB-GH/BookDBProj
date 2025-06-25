@@ -36,10 +36,11 @@ class query(connect):
         self.db = connection
 
 
-    def display(self):
+    def display(self, data):
         '''
         makes more sense to house all returns into a display statement that strips
         the db tuple formatting and makes it look nice
+        query comes in and points to a direction
         '''
 
 
@@ -85,7 +86,7 @@ class query(connect):
             print('No results')
             return False
         
-        return result
+        self.display(result)
 
     def search_series(self):
         '''
