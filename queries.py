@@ -8,7 +8,7 @@ class connect():
     def __init__(self):
         self.db_name = "postgres"
         self.db_user = "postgres"
-        self.db_password = "711984BerryRydell9"
+        self.db_password = ""
         self.db_host = "localhost"
         self.db_port = "5432"
         self.db_options = "-c search_path=dev_env"
@@ -36,6 +36,13 @@ class query(connect):
         self.db = connection
 
 
+    def display(self):
+        '''
+        makes more sense to house all returns into a display statement that strips
+        the db tuple formatting and makes it look nice
+        '''
+
+
     def total_books(self):
         '''
         as it sounds, this returns the amount of books
@@ -56,15 +63,29 @@ class query(connect):
         Uses the str_input function
         '''
         print("Author First name: ")
-        first = str_input()
+        first_name = name_input()
         print("Author Last name: ")
-        last = str_input()
+        last_name = name_input()
         #keeping this seperate to compare against entries in the database 
 
-        with self.db.cursor as query:
+        with self.db.cursor() as query:
             #need to look over database structure before finalizing this query
-            query.execute('select books.titles, ')
-            result = query.fetchall()
+            query.execute("""
+                select books.titles 
+                from books
+                join authors on books.author_id = authors.id
+                where author.first = %(first_name)s 
+                and author.last = %(last_name)s
+                """, 
+                {'first_name': first_name, 'last_name': last_name}
+            )
+
+        result = query.fetchall()
+        if result is None:
+            print('No results')
+            return False
+        
+        return result
 
     def search_series(self):
         '''
@@ -76,7 +97,7 @@ class query(connect):
 
     def search_book(self):
         '''
-        functino allows searching of the database
+        function allows searching of the database
         for single book existence
         BY TITLE
         '''

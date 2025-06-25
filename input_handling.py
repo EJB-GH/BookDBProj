@@ -1,4 +1,4 @@
-def str_input(): #an input checker specifically for strings
+def name_input(): #an input checker specifically for author names
     while True:
         try:
             string = input()
@@ -12,6 +12,23 @@ def str_input(): #an input checker specifically for strings
             return string
         except ValueError as e:
             print(f"An input error has occurred. {e}")
+
+def title_input(): #an input checker specifically for titles
+    #modified to allow for numeric inputs
+    #requires testing to see if anything else should be checked
+    while True:
+        try:
+            string = input()
+            if len(string) > 150:
+                raise ValueError("Input surpassed size allowance.")
+            if string == '':
+                raise ValueError("Input cannot be blank")
+            
+                continue
+            return string
+        except ValueError as e:
+            print(f"An input error has occurred. {e}")
+
 
 def choice(low,high):
     choice = 0
