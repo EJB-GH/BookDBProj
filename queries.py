@@ -54,7 +54,7 @@ class query(connect):
             result = query.fetchone()
  
             #learned that psycopg returns tuples
-            print("Total number of books: ", result[0])
+        self.display(result)
 
     def search_author(self):
         '''
@@ -99,11 +99,26 @@ class query(connect):
     def search_book(self):
         '''
         function allows searching of the database
-        for single book existence
+        for single book existence, but will return any matches
         BY TITLE
         '''
-        pass
+        print('Title:')
+        title = title_input()
             
+        with self.db.cursor() as query:
+            query.execute("""
+                select books.title
+                from books
+                where books.title = %(title)s
+                """, 
+                {'title': title}
+            )
 
+        result = query.fetchall()
+        if result is None:
+            print('No results')
+            return False
+        
+        self.display(result)
         
 
