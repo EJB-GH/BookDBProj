@@ -36,7 +36,7 @@ def totaling() -> str:
     selection = str(sub_opt1[choice(1, len(sub_opt1)) - 1])
     return str(selection)
 
-def searching():
+def searching() -> str:
     print("Searches.:\n")
     for i in range(len(sub_opt2)):
         print(f"\t*{sub_opt2[i] - {i + 1}}\n")

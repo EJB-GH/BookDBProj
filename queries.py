@@ -8,7 +8,7 @@ class connect():
     def __init__(self):
         self.db_name = "postgres"
         self.db_user = "postgres"
-        self.db_password = "711984CaycePollard9"
+        self.db_password = ""
         self.db_host = "localhost"
         self.db_port = "5432"
         self.db_options = "-c search_path=dev_env"
