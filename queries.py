@@ -8,7 +8,7 @@ class connect():
     def __init__(self):
         self.db_name = "postgres"
         self.db_user = "postgres"
-        self.db_password = ""
+        self.db_password = "711984CaycePollard9"
         self.db_host = "localhost"
         self.db_port = "5432"
         self.db_options = "-c search_path=dev_env"
@@ -30,10 +30,10 @@ class connect():
 
         return connection
 
-class query(connect):
-    
-    def __init__(self, connection):
-        self.db = connection
+class query():
+    def __init__(self):
+        self.connection = connect()
+        self.db = self.connection.db
 
 
     def display(self, data):
@@ -42,15 +42,29 @@ class query(connect):
         the db tuple formatting and makes it look nice
         query comes in and points to a direction
         '''
+        for item in data:
+            print(item)
 
 
     def total_books(self):
         '''
         as it sounds, this returns the amount of books
-        held in the lirary
+        held in the library
         '''
         with self.db.cursor() as query:
             query.execute('select count(books.id) Books from books')
+            result = query.fetchone()
+ 
+            #learned that psycopg returns tuples
+        self.display(result)
+
+    def total_authors(self):
+        '''
+        as it sounds, this returns the amount of authors
+        held in the library
+        '''
+        with self.db.cursor() as query:
+            query.execute('select count(authors.id) Authors from authors')
             result = query.fetchone()
  
             #learned that psycopg returns tuples
